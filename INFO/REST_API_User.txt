@@ -74,8 +74,6 @@ http://localhost:8080/Spring-Jdbc-Rest-1.0-SNAPSHOT/api/v1/users
     "email": "a.bri@mail.com"
 }
 
-Перевіремо через MySQL Workbench.
-
 
 (3) Отримання всіх даних
 
@@ -115,8 +113,6 @@ http://localhost:8080/Spring-Jdbc-Rest-1.0-SNAPSHOT/api/v1/users/3
     "email": "sunny@mail.com"
 }
 
-Перевіремо через MySQL Workbench та REST-запит за відповідним id.
-
 Також, спробуємо оновити за неіснуючим id.
 
 
@@ -125,8 +121,6 @@ http://localhost:8080/Spring-Jdbc-Rest-1.0-SNAPSHOT/api/v1/users/3
 DELETE
 http://localhost:8080/Spring-Jdbc-Rest-1.0-SNAPSHOT/api/v1/users/4
 
-Перевіремо через MySQL Workbench, REST-запити отримання всіх даних
-та за відповідним id.
 
 Також, спробуємо повторно видалити та тим самим id, та за неіснуючим id.
 

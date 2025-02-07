@@ -51,7 +51,6 @@ http://localhost:8080/Spring-Jdbc-Rest-1.0-SNAPSHOT/api/v1/products
     "price": 1.95
 }
 
-Перевіремо через MySQL Workbench.
 
 (2) Отримання всіх даних
 
@@ -80,7 +79,6 @@ http://localhost:8080/Spring-Jdbc-Rest-1.0-SNAPSHOT/api/v1/products/3
     "price": 1.15
 }
 
-Перевіремо через MySQL Workbench та REST-запит за відповідним id.
 
 Також, спробуємо оновити за неіснуючим id.
 
@@ -88,9 +86,6 @@ http://localhost:8080/Spring-Jdbc-Rest-1.0-SNAPSHOT/api/v1/products/3
 
 DELETE
 http://localhost:8080/Spring-Jdbc-Rest-1.0-SNAPSHOT/api/v1/products/4
-
-Перевіремо через MySQL Workbench, REST-запити отримання всіх даних
-та за відповідним id.
 
 Також, спробуємо повторно видалити та тим самим id, та за неіснуючим id.
 

@@ -34,9 +34,6 @@ https://tomcat.apache.org/
 Spring Framework
 https://spring.io/
 
-MySQL 8
-https://www.mysql.com/
-
 Jackson
 https://github.com/FasterXML/jackson
 
