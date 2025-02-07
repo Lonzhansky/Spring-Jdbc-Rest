@@ -1,0 +1,428 @@
+@startuml
+class org.example.app.dto.product.ProductDtoDeleteResponse {
+- int statusCode
+- String reasonPhrase
+- boolean success
+- String message
++ {static} String SUCCESS_MESSAGE
++ {static} String FAILURE_MESSAGE
++ {static} ProductDtoDeleteResponse of(Long,boolean)
++ String message()
++ String reasonPhrase()
++ boolean success()
++ int statusCode()
+}
+
+
+class org.example.app.dto.product.ProductDtoRequest {
+- Long id
+- String productName
+- String measure
+- Double quota
+- Double price
++ Double price()
++ Double quota()
++ String productName()
++ Long id()
++ String measure()
+}
+
+
+interface org.example.app.dao.user.UserDao {
+~ boolean create(UserDtoRequest)
+~ Optional<List<User>> fetchAll()
+~ Optional<User> fetchById(Long)
+~ boolean updateById(Long,UserDtoRequest)
+~ boolean deleteById(Long)
+~ Optional<User> getLastEntity()
+~ Optional<List<User>> fetchByFirstName(String)
+~ Optional<List<User>> fetchByLastName(String)
+~ Optional<List<User>> fetchAllOrderBy(String)
+}
+
+class org.example.app.entity.product.Product {
+- Long id
+- String name
+- String measure
+- Double quota
+- Double price
++ Long getId()
++ void setId(Long)
++ String getName()
++ void setName(String)
++ String getMeasure()
++ void setMeasure(String)
++ Double getQuota()
++ void setQuota(Double)
++ Double getPrice()
++ void setPrice(Double)
++ boolean equals(Object)
++ int hashCode()
++ String toString()
+}
+
+
+interface org.example.app.service.BaseService {
+~ T create(S)
+~ List<T> fetchAll()
+~ T fetchById(Long)
+~ T updateById(Long,S)
+~ boolean deleteById(Long)
+}
+
+interface org.example.app.dao.product.ProductDao {
+~ boolean create(ProductDtoRequest)
+~ Optional<List<Product>> fetchAll()
+~ Optional<Product> fetchById(Long)
+~ boolean updateById(Long,ProductDtoRequest)
+~ boolean deleteById(Long)
+~ Optional<Product> getLastEntity()
+}
+
+class org.example.app.dao.user.UserDaoImpl {
+~ NamedParameterJdbcTemplate template
++ boolean create(UserDtoRequest)
++ Optional<List<User>> fetchAll()
++ Optional<User> fetchById(Long)
++ boolean updateById(Long,UserDtoRequest)
++ boolean deleteById(Long)
++ Optional<User> getLastEntity()
++ Optional<List<User>> fetchByFirstName(String)
++ Optional<List<User>> fetchByLastName(String)
++ Optional<List<User>> fetchAllOrderBy(String)
+}
+
+
+class org.example.app.dto.user.UserDtoGetByIdResponse {
+- int statusCode
+- String reasonPhrase
+- boolean success
+- String message
+- User user
++ {static} String SUCCESS_MESSAGE
++ {static} String FAILURE_MESSAGE
++ {static} UserDtoGetByIdResponse of(Long,boolean,User)
++ String message()
++ String reasonPhrase()
++ boolean success()
++ int statusCode()
++ User user()
+}
+
+
+class org.example.app.config.AppInitializer {
+# Class<?>[] getRootConfigClasses()
+# Class<?>[] getServletConfigClasses()
+# String[] getServletMappings()
+}
+
+class org.example.app.dto.user.UserDtoRequest {
+- Long id
+- String firstName
+- String lastName
+- String email
++ String lastName()
++ String firstName()
++ String email()
++ Long id()
+}
+
+
+class org.example.app.controller.UserController {
+~ UserService userService
++ ResponseEntity<UserDtoCreateResponse> createUser(UserDtoRequest)
++ ResponseEntity<UserDtoListResponse> fetchAllUsers()
++ ResponseEntity<UserDtoGetByIdResponse> fetchUserById(Long)
++ ResponseEntity<UserDtoUpdateResponse> updateUserById(Long,UserDtoRequest)
++ ResponseEntity<UserDtoDeleteResponse> deleteUserById(Long)
++ ResponseEntity<UserDtoGetLastEntityResponse> getLastEntity()
++ ResponseEntity<UserDtoListResponse> fetchByFirstName(String)
++ ResponseEntity<UserDtoListResponse> fetchByLastName(String)
++ ResponseEntity<UserDtoListResponse> fetchAllOrderBy(String)
+}
+
+
+class org.example.app.dto.user.UserDtoUpdateResponse {
+- int statusCode
+- String reasonPhrase
+- boolean success
+- String message
+- User user
++ {static} String SUCCESS_MESSAGE
++ {static} String FAILURE_MESSAGE
++ {static} UserDtoUpdateResponse of(Long,boolean,User)
++ String message()
++ String reasonPhrase()
++ boolean success()
++ int statusCode()
++ User user()
+}
+
+
+class org.example.app.config.AppContext {
+~ Environment environment
+~ DataSource dataSource()
+}
+
+
+class org.example.app.dto.user.UserDtoListResponse {
+- int statusCode
+- String reasonPhrase
+- boolean success
+- String message
+- List<User> userList
++ {static} String SUCCESS_MESSAGE
++ {static} String FAILURE_MESSAGE
++ {static} UserDtoListResponse of(boolean,List<User>)
++ String message()
++ List<User> userList()
++ String reasonPhrase()
++ boolean success()
++ int statusCode()
+}
+
+
+class org.example.app.dto.user.UserDtoCreateResponse {
+- int statusCode
+- String reasonPhrase
+- boolean success
+- String message
+- User user
++ {static} String SUCCESS_MESSAGE
++ {static} String FAILURE_MESSAGE
++ {static} UserDtoCreateResponse of(boolean,User)
++ String message()
++ String reasonPhrase()
++ boolean success()
++ int statusCode()
++ User user()
+}
+
+
+class org.example.app.entity.user.User {
+- Long id
+- String firstName
+- String lastName
+- String email
+}
+
+class org.example.app.service.product.ProductServiceImpl {
+~ ProductDao productDao
++ Product create(ProductDtoRequest)
++ List<Product> fetchAll()
++ Product fetchById(Long)
++ Product updateById(Long,ProductDtoRequest)
++ boolean deleteById(Long)
++ Product getLastEntity()
+}
+
+
+class org.example.app.dto.product.ProductDtoCreateResponse {
+- int statusCode
+- String reasonPhrase
+- boolean success
+- String message
+- Product product
++ {static} String SUCCESS_MESSAGE
++ {static} String FAILURE_MESSAGE
++ {static} ProductDtoCreateResponse of(boolean,Product)
++ String message()
++ String reasonPhrase()
++ boolean success()
++ Product product()
++ int statusCode()
+}
+
+
+class org.example.app.dto.product.ProductDtoGetLastEntityResponse {
+- int statusCode
+- String reasonPhrase
+- boolean success
+- String message
+- Product product
++ {static} String SUCCESS_MESSAGE
++ {static} String FAILURE_MESSAGE
++ {static} ProductDtoGetLastEntityResponse of(boolean,Product)
++ String message()
++ String reasonPhrase()
++ boolean success()
++ Product product()
++ int statusCode()
+}
+
+
+class org.example.app.dto.product.ProductDtoUpdateResponse {
+- int statusCode
+- String reasonPhrase
+- boolean success
+- String message
+- Product product
++ {static} String SUCCESS_MESSAGE
++ {static} String FAILURE_MESSAGE
++ {static} ProductDtoUpdateResponse of(Long,boolean,Product)
++ String message()
++ String reasonPhrase()
++ boolean success()
++ Product product()
++ int statusCode()
+}
+
+
+class org.example.app.entity.product.ProductMapper {
++ Product mapRow(ResultSet,int)
+}
+
+class org.example.app.dto.product.ProductDtoListResponse {
+- int statusCode
+- String reasonPhrase
+- boolean success
+- String message
+- List<Product> productList
++ {static} String SUCCESS_MESSAGE
++ {static} String FAILURE_MESSAGE
++ {static} ProductDtoListResponse of(boolean,List<Product>)
++ String message()
++ List<Product> productList()
++ String reasonPhrase()
++ boolean success()
++ int statusCode()
+}
+
+
+interface org.example.app.service.product.ProductService {
+~ Product create(ProductDtoRequest)
+~ List<Product> fetchAll()
+~ Product fetchById(Long)
+~ Product updateById(Long,ProductDtoRequest)
+~ boolean deleteById(Long)
+~ Product getLastEntity()
+}
+
+class org.example.app.controller.ProductController {
+~ ProductService productService
++ ResponseEntity<ProductDtoCreateResponse> createProduct(ProductDtoRequest)
++ ResponseEntity<ProductDtoListResponse> fetchAllProducts()
++ ResponseEntity<ProductDtoGetByIdResponse> fetchProductById(Long)
++ ResponseEntity<ProductDtoUpdateResponse> updateProductById(Long,ProductDtoRequest)
++ ResponseEntity<ProductDtoDeleteResponse> deleteProductById(Long)
++ ResponseEntity<ProductDtoGetLastEntityResponse> getLastEntity()
+}
+
+
+class org.example.app.entity.user.UserMapper {
++ User mapRow(ResultSet,int)
+}
+
+class org.example.app.dto.user.UserDtoGetLastEntityResponse {
+- int statusCode
+- String reasonPhrase
+- boolean success
+- String message
+- User user
++ {static} String SUCCESS_MESSAGE
++ {static} String FAILURE_MESSAGE
++ {static} UserDtoGetLastEntityResponse of(boolean,User)
++ String message()
++ String reasonPhrase()
++ boolean success()
++ int statusCode()
++ User user()
+}
+
+
+class org.example.app.service.user.UserServiceImpl {
+~ UserDao userDao
++ User create(UserDtoRequest)
++ List<User> fetchAll()
++ User fetchById(Long)
++ User updateById(Long,UserDtoRequest)
++ boolean deleteById(Long)
++ User getLastEntity()
++ List<User> fetchByFirstName(String)
++ List<User> fetchByLastName(String)
++ List<User> fetchAllOrderBy(String)
+}
+
+
+class org.example.app.dto.product.ProductDtoGetByIdResponse {
+- int statusCode
+- String reasonPhrase
+- boolean success
+- String message
+- Product product
++ {static} String SUCCESS_MESSAGE
++ {static} String FAILURE_MESSAGE
++ {static} ProductDtoGetByIdResponse of(Long,boolean,Product)
++ String message()
++ String reasonPhrase()
++ boolean success()
++ Product product()
++ int statusCode()
+}
+
+
+interface org.example.app.dao.BaseDao {
+~ boolean create(S)
+~ Optional<List<T>> fetchAll()
+~ Optional<T> fetchById(Long)
+~ boolean updateById(Long,S)
+~ boolean deleteById(Long)
+}
+
+interface org.example.app.service.user.UserService {
+~ User create(UserDtoRequest)
+~ List<User> fetchAll()
+~ User fetchById(Long)
+~ User updateById(Long,UserDtoRequest)
+~ boolean deleteById(Long)
+~ User getLastEntity()
+~ List<User> fetchByFirstName(String)
+~ List<User> fetchByLastName(String)
+~ List<User> fetchAllOrderBy(String)
+}
+
+class org.example.app.dto.user.UserDtoDeleteResponse {
+- int statusCode
+- String reasonPhrase
+- boolean success
+- String message
++ {static} String SUCCESS_MESSAGE
++ {static} String FAILURE_MESSAGE
++ {static} UserDtoDeleteResponse of(Long,boolean)
++ String message()
++ String reasonPhrase()
++ boolean success()
++ int statusCode()
+}
+
+
+class org.example.app.dao.product.ProductDaoImpl {
+~ JdbcTemplate jdbcTemplate
++ boolean create(ProductDtoRequest)
++ Optional<List<Product>> fetchAll()
++ Optional<Product> fetchById(Long)
++ boolean updateById(Long,ProductDtoRequest)
++ boolean deleteById(Long)
++ Optional<Product> getLastEntity()
+}
+
+
+class org.example.app.config.WebConfig {
++ void addResourceHandlers(ResourceHandlerRegistry)
+}
+
+
+
+org.example.app.dao.BaseDao <|-- org.example.app.dao.user.UserDao
+org.example.app.dao.BaseDao <|-- org.example.app.dao.product.ProductDao
+org.example.app.dao.user.UserDao <|.. org.example.app.dao.user.UserDaoImpl
+org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer <|-- org.example.app.config.AppInitializer
+org.example.app.service.product.ProductService <|.. org.example.app.service.product.ProductServiceImpl
+org.springframework.jdbc.core.RowMapper <|.. org.example.app.entity.product.ProductMapper
+org.example.app.service.BaseService <|-- org.example.app.service.product.ProductService
+org.springframework.jdbc.core.RowMapper <|.. org.example.app.entity.user.UserMapper
+org.example.app.service.user.UserService <|.. org.example.app.service.user.UserServiceImpl
+org.example.app.service.BaseService <|-- org.example.app.service.user.UserService
+org.example.app.dao.product.ProductDao <|.. org.example.app.dao.product.ProductDaoImpl
+org.springframework.web.servlet.config.annotation.WebMvcConfigurer <|.. org.example.app.config.WebConfig
+@enduml
